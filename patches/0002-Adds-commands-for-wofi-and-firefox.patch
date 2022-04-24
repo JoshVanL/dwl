@@ -1,39 +1,42 @@
-From 2f72ab204af2bde14d28b763178e2b1d99ed8181 Mon Sep 17 00:00:00 2001
+From c19dcf2931d696b07ba242478d6435ac0ebe9426 Mon Sep 17 00:00:00 2001
 From: joshvanl <vleeuwenjoshua@gmail.com>
 Date: Sun, 24 Apr 2022 15:10:20 +0100
 Subject: [PATCH] Adds commands for wofi and firefox
 
 Signed-off-by: joshvanl <vleeuwenjoshua@gmail.com>
 ---
- config.def.h | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ config.def.h | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index 190b0da..15cac74 100644
+index 190b0da..bba94fb 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -64,13 +64,14 @@ static const int natural_scrolling = 0;
+@@ -64,13 +64,15 @@ static const int natural_scrolling = 0;
  
  /* commands */
  static const char *termcmd[] = { "alacritty", NULL };
 -static const char *menucmd[] = { "bemenu-run", NULL };
 +static const char *menucmd[] = { "wofi", "-S", "run", "-font", "Menlo For Powerline", NULL };
 +static const char *poweroffcmd[]  = { "sudo", "poweroff", NULL };
++static const char *firefoxcmd[]  = { "firefox", NULL };
  
  static const Key keys[] = {
  	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
  	/* modifier                  key                 function        argument */
- 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
+-	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
 -	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
++	{ MODKEY,                    XKB_KEY_d,          spawn,          {.v = menucmd} },
 +	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
  	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
  	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
  	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },
-@@ -103,6 +104,8 @@ static const Key keys[] = {
+@@ -103,6 +105,9 @@ static const Key keys[] = {
  	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
  	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
  
-+	{ MODKEY|ShiftMask,          XK_f,               spawn,          {.v = firefox} },
++	{ MODKEY|WLR_MODIFIER_SHIFT|WLR_MODIFIER_CTRL, XKB_KEY_Delete, spawn, {.v = poweroffcmd}},
++	{ MODKEY|WLR_MODIFIER_SHIFT,                   XKB_KEY_F,      spawn, {.v = firefoxcmd}},
 +
  	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
  	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
