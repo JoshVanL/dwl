@@ -1,0 +1,34 @@
+diff --git a/config.def.h b/config.def.h
+index 14ee2e8..8913852 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -73,6 +73,7 @@ static const char *termcmd[] = { "alacritty", NULL };
+ static const char *menucmd[] = { "wofi", "-S", "run", "-font", "Menlo For Powerline", NULL };
+ static const char *poweroffcmd[]  = { "sudo", "poweroff", NULL };
+ static const char *firefoxcmd[]  = { "firefox", NULL };
++static const char *chromiumcmd[]  = { "chromium", NULL };
+ 
+ static const Key keys[] = {
+ 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
+@@ -103,7 +104,7 @@ static const Key keys[] = {
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_O,          incovgaps,     {.i = -1 } },
+ 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
+ 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
+-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
++	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          killclient,     {0} },
+ 	{ MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
+ 	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
+ 	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
+@@ -125,10 +126,11 @@ static const Key keys[] = {
+ 	TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                  6),
+ 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
+ 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
+-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
++	{ MODKEY,                    XKB_KEY_q,          quit,           {0} },
+ 
+ 	{ MODKEY|WLR_MODIFIER_SHIFT|WLR_MODIFIER_CTRL, XKB_KEY_Delete, spawn, {.v = poweroffcmd}},
+ 	{ MODKEY|WLR_MODIFIER_SHIFT,                   XKB_KEY_F,      spawn, {.v = firefoxcmd}},
++	{ MODKEY|WLR_MODIFIER_SHIFT,                   XKB_KEY_C,      spawn, {.v = chromiumcmd}},
+ 
+ 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
+ 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
