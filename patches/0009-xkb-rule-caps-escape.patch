@@ -1,0 +1,13 @@
+diff --git a/config.def.h b/config.def.h
+index d7c44fa..2d9d8f2 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -47,7 +47,7 @@ static const struct xkb_rule_names xkb_rules = {
+ 	/* example:
+ 	.options = "ctrl:nocaps",
+ 	*/
+-	.options = "",
++	.options = "caps:escape",
+ };
+ 
+ static const int repeat_rate = 50;
