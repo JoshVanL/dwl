@@ -1,0 +1,28 @@
+diff --git a/dwl.c b/dwl.c
+index e742005..456722d 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -739,7 +739,7 @@ cleanupmon(struct wl_listener *listener, void *data)
+ 	struct wlr_output *wlr_output = data;
+ 	DwlWmMonitor *mon, *montmp;
+ 	Monitor *m = wlr_output->data;
+-	int nmons, i = 0;
++	int i = 0;
+ 
+ 	wl_list_remove(&m->destroy.link);
+ 	wl_list_remove(&m->frame.link);
+@@ -752,10 +752,10 @@ cleanupmon(struct wl_listener *listener, void *data)
+ 
+ 	wlr_scene_output_destroy(m->scene_output);
+ 
+-	if ((nmons = wl_list_length(&mons)))
+-		do /* don't switch to disabled mons */
+-			selmon = wl_container_of(mons.prev, selmon, link);
+-		while (!selmon->wlr_output->enabled && i++ < nmons);
++	wl_list_for_each(selmon, &mons, link) {
++		if (selmon->wlr_output->enabled)
++			break;
++	}
+ 
+ 	focusclient(focustop(selmon), 1);
+ 	closemon(m);
