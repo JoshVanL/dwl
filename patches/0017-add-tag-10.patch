@@ -1,0 +1,29 @@
+diff --git a/config.def.h b/config.def.h
+index d43fa34..02483ed 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -12,7 +12,7 @@ static const float bordercolor[]    = {0.4, 0.4, 0.4, 1.0};
+ static const float focuscolor[]     = {0.8, 0.8, 0.8, 1.0};
+ 
+ /* tagging */
+-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
++static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+ 
+ static const Rule rules[] = {
+ 	/* app_id     title       tags mask     isfloating   monitor */
+@@ -109,7 +109,6 @@ static const Key keys[] = {
+ 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
+ 	{ MODKEY,                    XKB_KEY_f,          togglefullscreen, {0} },
+-	{ MODKEY,                    XKB_KEY_0,          view,           {.ui = ~0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright, tag,            {.ui = ~0} },
+ 	{ MODKEY,                    XKB_KEY_comma,      focusmon,       {.i = WLR_DIRECTION_LEFT} },
+ 	{ MODKEY,                    XKB_KEY_period,     focusmon,       {.i = WLR_DIRECTION_RIGHT} },
+@@ -124,6 +123,7 @@ static const Key keys[] = {
+ 	TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                  6),
+ 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
+ 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
++	TAGKEYS(          XKB_KEY_0, XKB_KEY_parenright,                 9),
+ 	{ MODKEY,                    XKB_KEY_q,          quit,           {0} },
+ 
+ 	{ MODKEY|WLR_MODIFIER_SHIFT|WLR_MODIFIER_CTRL, XKB_KEY_Delete, spawn, {.v = poweroffcmd}},
