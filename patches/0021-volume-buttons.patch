@@ -1,0 +1,29 @@
+diff --git a/config.def.h b/config.def.h
+index 66269e3..0e30200 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -74,7 +74,10 @@ static const char *menucmd[]      = { "wofi", "-S", "run", "-font", "Menlo For P
+ static const char *poweroffcmd[]  = { "sudo", "poweroff", NULL };
+ static const char *firefoxcmd[]   = { "firefox", NULL };
+ static const char *chromiumcmd[]  = { "chromium", NULL };
+-static const char *mutecmd[]      = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
++static const char *micmutecmd[]   = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
++static const char *voldowncmd[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-3%", NULL };
++static const char *volupcmd[]     = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+3%", NULL };
++static const char *volmutecmd[]   = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
+ 
+ static const Key keys[] = {
+ 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
+@@ -130,7 +133,11 @@ static const Key keys[] = {
+ 	{ MODKEY|WLR_MODIFIER_SHIFT|WLR_MODIFIER_CTRL, XKB_KEY_Delete, spawn, {.v = poweroffcmd}},
+ 	{ MODKEY|WLR_MODIFIER_SHIFT,                   XKB_KEY_F,      spawn, {.v = firefoxcmd}},
+ 	{ MODKEY|WLR_MODIFIER_SHIFT,                   XKB_KEY_C,      spawn, {.v = chromiumcmd}},
+-	{ MODKEY,                                      XKB_KEY_a,      spawn, {.v = mutecmd}},
++	{ MODKEY,                                      XKB_KEY_a,      spawn, {.v = micmutecmd}},
++
++	{ 0, XKB_KEY_XF86AudioLowerVolume,  spawn, {.v = voldowncmd}},
++	{ 0, XKB_KEY_XF86AudioRaiseVolume,  spawn, {.v = volupcmd}},
++	{ 0, XKB_KEY_XF86AudioMute,         spawn, {.v = volmutecmd}},
+ 
+ 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
+ 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
