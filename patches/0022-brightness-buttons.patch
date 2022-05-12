@@ -1,0 +1,41 @@
+diff --git a/config.def.h b/config.def.h
+index 0e30200..83560a6 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -69,15 +69,17 @@ static const int natural_scrolling = 1;
+ #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+ 
+ /* commands */
+-static const char *termcmd[]      = { "alacritty", NULL };
+-static const char *menucmd[]      = { "wofi", "-S", "run", "-font", "Menlo For Powerline", NULL };
+-static const char *poweroffcmd[]  = { "sudo", "poweroff", NULL };
+-static const char *firefoxcmd[]   = { "firefox", NULL };
+-static const char *chromiumcmd[]  = { "chromium", NULL };
+-static const char *micmutecmd[]   = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
+-static const char *voldowncmd[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-3%", NULL };
+-static const char *volupcmd[]     = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+3%", NULL };
+-static const char *volmutecmd[]   = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
++static const char *termcmd[]       = { "alacritty", NULL };
++static const char *menucmd[]       = { "wofi", "-S", "run", "-font", "Menlo For Powerline", NULL };
++static const char *poweroffcmd[]   = { "sudo", "poweroff", NULL };
++static const char *firefoxcmd[]    = { "firefox", NULL };
++static const char *chromiumcmd[]   = { "chromium", NULL };
++static const char *micmutecmd[]    = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
++static const char *voldowncmd[]    = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-3%", NULL };
++static const char *volupcmd[]      = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+3%", NULL };
++static const char *volmutecmd[]    = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
++static const char *brightdowncmd[] = { "brightnessctl", "set", "10%-", NULL };
++static const char *brightupcmd[]   = { "brightnessctl", "set", "+10%", NULL };
+ 
+ static const Key keys[] = {
+ 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
+@@ -139,6 +141,9 @@ static const Key keys[] = {
+ 	{ 0, XKB_KEY_XF86AudioRaiseVolume,  spawn, {.v = volupcmd}},
+ 	{ 0, XKB_KEY_XF86AudioMute,         spawn, {.v = volmutecmd}},
+ 
++	{ 0, XKB_KEY_XF86MonBrightnessDown, spawn, {.v = brightdowncmd}},
++	{ 0, XKB_KEY_XF86MonBrightnessUp,   spawn, {.v = brightupcmd}},
++
+ 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
+ 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
+ #define CHVT(n) { WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_XF86Switch_VT_##n, chvt, {.ui = (n)} }
