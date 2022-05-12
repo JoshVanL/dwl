@@ -1,0 +1,13 @@
+diff --git a/config.def.h b/config.def.h
+index de1a2d9..66269e3 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -54,7 +54,7 @@ static const int repeat_delay = 150;
+ 
+ /* Trackpad */
+ static const int tap_to_click = 1;
+-static const int natural_scrolling = 0;
++static const int natural_scrolling = 1;
+ 
+ /* If you want to use the windows key change this to WLR_MODIFIER_LOGO */
+ #define MODKEY WLR_MODIFIER_LOGO
