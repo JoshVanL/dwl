@@ -109,7 +109,7 @@ index b6d3336..e742005 100644
  	/*
 @@ -2679,3 +2700,193 @@ main(int argc, char *argv[])
  usage:
- 	die("Usage: %s [-s startup command]", argv[0]);
+ 	die("Usage: %s [-v] [-s startup command]", argv[0]);
  }
 +
 +/* dwl_wm_monitor_v1 */

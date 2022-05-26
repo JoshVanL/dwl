@@ -1,19 +1,9 @@
-From 87cd53d4798bd2183a23b982f8a795a936dfada0 Mon Sep 17 00:00:00 2001
-From: joshvanl <vleeuwenjoshua@gmail.com>
-Date: Sun, 24 Apr 2022 14:03:41 +0100
-Subject: [PATCH] Change mod key from ALT to LOGO
-
-Signed-off-by: joshvanl <vleeuwenjoshua@gmail.com>
----
- config.def.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/config.def.h b/config.def.h
-index 190b0da..4a067a4 100644
+index bcca4d2..8ad3ea5 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -52,7 +52,7 @@ static const int tap_to_click = 1;
- static const int natural_scrolling = 0;
+@@ -57,7 +57,7 @@ static const int tap_to_click = 1;
+ static const double accel_speed = 0.0;
  
  /* If you want to use the windows key change this to WLR_MODIFIER_LOGO */
 -#define MODKEY WLR_MODIFIER_ALT
@@ -21,6 +11,3 @@ index 190b0da..4a067a4 100644
  #define TAGKEYS(KEY,SKEY,TAG) \
  	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
  	{ MODKEY|WLR_MODIFIER_CTRL,  KEY,            toggleview,      {.ui = 1 << TAG} }, \
--- 
-2.35.3
-

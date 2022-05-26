@@ -12,7 +12,7 @@ index 4c859da..b19c030 100644
  	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = -1} },
  	{ MODKEY,                    XKB_KEY_k,          setmfact,       {.f = -0.05} },
 diff --git a/dwl.c b/dwl.c
-index e371a1e..b6d3336 100644
+index e0ad9ad..6713673 100644
 --- a/dwl.c
 +++ b/dwl.c
 @@ -257,6 +257,7 @@ static void killclient(const Arg *arg);
@@ -23,8 +23,8 @@ index e371a1e..b6d3336 100644
  static void motionabsolute(struct wl_listener *listener, void *data);
  static void motionnotify(uint32_t time);
  static void motionrelative(struct wl_listener *listener, void *data);
-@@ -1495,6 +1496,36 @@ monocle(Monitor *m)
- 	}
+@@ -1511,6 +1512,36 @@ monocle(Monitor *m)
+ 	focusclient(focustop(m), 1);
  }
  
 +void
